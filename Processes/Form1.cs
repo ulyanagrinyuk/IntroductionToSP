@@ -21,6 +21,8 @@ namespace Processes
 			process_list = new List<Process>();
 			richTextBoxProcessName.Text = "notepad";
 			//InitProcess();
+			lvProcesses.Columns.Add("PID");
+			lvProcesses.Columns.Add("Name");
 		}
 		//void Form1_Closing(object sender, CancelEventArgs e)
 		//{
@@ -34,7 +36,9 @@ namespace Processes
 			myProcess.StartInfo = new System.Diagnostics.ProcessStartInfo(richTextBoxProcessName.Text);
 			myProcess.Start();
 			//myProcess = new System.Diagnostics.Process(richTextBoxProcessName.Text);
-			process_list.Add(myProcess);
+			//process_list.Add(myProcess);
+			lvProcesses.Items.Add(myProcess.Id.ToString());
+			lvProcesses.Items[lvProcesses.Items.Count - 1].SubItems.Add(myProcess.ProcessName);
 		}
 		void AllignText()
 		{
@@ -46,34 +50,42 @@ namespace Processes
 		{
 			InitProcess();
 			//myProcess.Start();
-			Info();
+			//Info();
 			//this.TopMost = true;
+
 		}
 
 		private void buttonStop_Click(object sender, EventArgs e)
 		{
-			if (process_list.Count > 0)
+			//if (process_list.Count > 0)
+			if(lvProcesses.Items.Count > 0)
 			{
 				try
 				{
-					myProcess = process_list.Last();
+					//myProcess = process_list.Last();
+					myProcess = Process.GetProcessById(Convert.ToInt32(lvProcesses.Items[lvProcesses.Items.Count - 1].Text));
 					myProcess.CloseMainWindow();              //закрывает процесс
 					myProcess.Close();                       //освобождает ресурсы, занимаемые процессом
-					process_list.RemoveAt(process_list.Count - 1);
-
+															//process_list.RemoveAt(process_list.Count - 1);
+													     	//lvProcesses.Items[lvProcesses.Items.Count-1].SubItems.Clear();
+					//lvProcesses.Items.RemoveByKey(myProcess.Id.ToString());
+					lvProcesses.Items.RemoveAt(lvProcesses.Items.Count - 1);
 				}
 				catch (Exception ex)
 				{
-					process_list.RemoveAt(0);
-					Info();
+					MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					//process_list.RemoveAt(process_list.Count - 1);
+					//lvProcesses.Items.RemoveByKey(myProcess.Id.ToString());
+					lvProcesses.Items.RemoveAt(lvProcesses.Items.Count - 1);
 				}
+					Info();
 			}
 		}
 
 		private void Form1_FormClosing(object sender, FormClosingEventArgs e)
 		{
 
-			while(process_list.Count >0)
+			while(process_list.Count > 0)
 			{
 				try
 				{
