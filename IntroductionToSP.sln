@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Processes", "Processes\Processes.csproj", "{5FD47C08-20EE-4CF5-ACEF-862CEB5E7F81}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterprocessCommunication", "InterprocessCommunication\InterprocessCommunication.csproj", "{8BAEDB1F-08EC-4B38-A5D7-6F2901821EEB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5FD47C08-20EE-4CF5-ACEF-862CEB5E7F81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FD47C08-20EE-4CF5-ACEF-862CEB5E7F81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FD47C08-20EE-4CF5-ACEF-862CEB5E7F81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BAEDB1F-08EC-4B38-A5D7-6F2901821EEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BAEDB1F-08EC-4B38-A5D7-6F2901821EEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BAEDB1F-08EC-4B38-A5D7-6F2901821EEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BAEDB1F-08EC-4B38-A5D7-6F2901821EEB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
